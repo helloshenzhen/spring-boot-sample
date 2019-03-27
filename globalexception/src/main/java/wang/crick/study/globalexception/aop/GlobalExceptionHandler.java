@@ -13,9 +13,13 @@ import java.util.Map;
 //@RestControllerAdvice
 public class GlobalExceptionHandler {
 
-    private Map<String, Object> getErrorObject(int code, String message) {
+    private Map<String, Object> getErrorObject(Integer code, String message) {
         Map<String, Object> error = new HashMap<>();
-        error.put("code", code);
+        if (null == code){
+            error.put("code", null);
+        }else {
+            error.put("code", code);
+        }
         error.put("message", message);
         error.put("result","fail");
         return error;
